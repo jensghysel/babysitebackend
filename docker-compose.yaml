@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  mariadb:
+    image: mariadb
+    container_name: mariadb
+    ports:
+    - "3306:3306"
+    environment:
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_DATABASE=babyghysel
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    hostname: phpmyadmin
+    container_name: phpmyadmin
+    ports:
+    - 8081:80
+    environment:
+    - TZ=Europe/Brussels
+    links:
+    - mariadb:db
